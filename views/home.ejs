@@ -43,11 +43,11 @@
             }
         </style>
 
-        <script src="socket.io/socket.io.js"></script>
-        <script src="https://attsocketio.herokuapp.com/socket.io/socket.io.js"></script>  <!-- Safari -->
+        <!-- <script src="socket.io/socket.io.js"></script> Chrome can use this -->
+        <script src="https://attsocketio.herokuapp.com/socket.io/socket.io.js"></script>  <!-- Safari, Firefox -->
         <script>
             // var socket = io("http://localhost:3000/");
-            var socket = io("https://attsocketio.herokuapp.com/");
+            var socket = io("https://attsocketio.herokuapp.com");
             function btnSubmitEvent() {
                 var name = document.getElementById("txt_name").value;
                 var email = document.getElementById("txt_email").value;
