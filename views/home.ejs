@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo3 chat Socket.io</title>
+
+        <style>
+            .left {
+                float: left;
+                border: 1px solid red;
+                width: 100px;
+            }
+            .right {
+                float: right;
+                border: 1px solid blue;
+                width: 100px;
+            }
+            .wrapper {
+                width: 80%;
+                margin: auto;
+            }
+            .user_list {
+                text-align: center;
+            }
+            .info {
+                border: 2px solid rgb(45, 112, 255);
+                margin: auto;
+                padding: 10px;
+                width: 200px;
+                text-align: center;
+            }
+            input {
+                padding: 5px;
+                margin-bottom: 5px;
+            }
+            input[type=text] {width: 100%;}
+            .user {
+                border-bottom: 1px solid #000;
+                padding: 5px;
+            }
+            .user_wrapper {
+                width: 50%;
+                margin: auto;
+            }
+        </style>
+
+        <script src="socket.io/socket.io.js"></script>
+        <script>
+            var socket = io("http://localhost:3000/");
+            function btnSubmitEvent() {
+                var name = document.getElementById("txt_name").value;
+                var email = document.getElementById("txt_email").value;
+                socket.emit("client_send_info", {name: name, email: email});
+            }
+
+            socket.on("server_send_users", function(userArray) {
+                var userWrapper = document.getElementById("user_wrapper");
+                userWrapper.innerHTML = "";
+                for(i in userArray) {
+                    var newDiv = document.createElement("div");
+                    newDiv.setAttribute("class", "user");
+                    newDiv.innerHTML = userArray[i].name + " - " + userArray[i].email;
+                    userWrapper.appendChild(newDiv);
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <h3>Demo4 Socket.io NodeJS</h3>
+        <div class="wrapper">
+            <div class="info">
+                <input type="text" id="txt_name" placeholder="name" /><br>
+                <input type="text" id="txt_email" placeholder="email" /><br>
+                <input type="button" id="btn_submit" onclick="btnSubmitEvent()" value="Submit" /><br>
+            </div>
+            <div class="user_list">
+                <h3>User List</h3>
+                <div class="user_wrapper" id="user_wrapper">
+                    <div class="user">Anhtu - taanhtu95@gmail.com</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
