@@ -5,11 +5,11 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-server.listen(3000, function() {
+server.listen(process.env.PORT || 3000, function() {
     console.log("server is listening on 3000 port...");
 });
 
-app.get("/home", function(req, res) {
+app.get("/", function(req, res) {
     res.render("home");
 });
 

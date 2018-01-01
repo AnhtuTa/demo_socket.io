@@ -45,7 +45,8 @@
 
         <script src="socket.io/socket.io.js"></script>
         <script>
-            var socket = io("http://localhost:3000/");
+            // var socket = io("http://localhost:3000/");
+            var socket = io("https://attsocketio.herokuapp.com/");
             function btnSubmitEvent() {
                 var name = document.getElementById("txt_name").value;
                 var email = document.getElementById("txt_email").value;
