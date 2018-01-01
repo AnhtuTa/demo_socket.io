@@ -1,4 +1,4 @@
-#Demo NodeJS socket.io
+# Demo NodeJS socket.io
 
 install express, ejs and socket.io: go to project folder in your computer, enter:
 $ npm install express ejs socket.io
